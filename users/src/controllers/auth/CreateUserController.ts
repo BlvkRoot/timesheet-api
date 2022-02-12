@@ -16,6 +16,8 @@ class CreateUserController implements ICreateUserController {
         phone,
       });
 
+      delete user.password;
+
       return user;
     } catch (error) {
         throw new Error(`${error}`);

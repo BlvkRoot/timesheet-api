@@ -6,8 +6,6 @@ const authRoutes = Router();
 authRoutes.post('/users/create', async (request: Request, response: Response) => {
     try {
         const user = await createUserFactory().handle(request, response);
-
-        user.password = null;
         return response.json({
             message: 'User Created Successfully',
             success: true,

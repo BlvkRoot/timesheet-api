@@ -1,6 +1,8 @@
 import UserDTO from '../../../dto/UserDTO';
 import ICreateUserRepository from '../../repository/auth/ICreateUserRepository';
 import ICreateUserService from './ICreateUserService';
+import { sign } from 'jsonwebtoken';
+import authJson from '../../config/auth.json';
 
 class CreateUserService implements ICreateUserService {
   constructor(private userRepository: ICreateUserRepository) {}
@@ -13,6 +15,8 @@ class CreateUserService implements ICreateUserService {
             password,
             phone,
           });
+        const token = sign({name, email, phone}, authJson.secret, { expiresIn: '1d'});
+        user.token = token;
         return user;
     } catch (error) {
         throw new Error(`${error}`);
