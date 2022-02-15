@@ -9,8 +9,7 @@ class CreateUserRepository implements ICreateUserRepository {
     this.repository = getRepository(Users);
   }
 
-  create = async ({ name, email, password, phone }: UserDTO): Promise<Users> => {
-    
+  create = async ({ name, email, password, phone }: UserDTO): Promise<Users> => { 
     try {
         const user = this.repository.create({ name, email, password, phone });
 
@@ -20,6 +19,15 @@ class CreateUserRepository implements ICreateUserRepository {
         throw new Error(message);
     }
   };
+
+  userAlreadyExists = async (email: string): Promise<Users> => {
+    try {
+      const user = await this.repository.findOne({email});
+      return user;
+    } catch ({message}) {
+      throw new Error(message);
+    }
+  }
 }
 
 export default CreateUserRepository;
