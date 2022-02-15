@@ -1,4 +1,4 @@
-import UserDTO from '../../../dto/UserDTO';
+import UserDTO from '../../dto/UserDTO';
 import ICreateUserRepository from '../../repository/auth/ICreateUserRepository';
 import ICreateUserService from './ICreateUserService';
 import { sign } from 'jsonwebtoken';

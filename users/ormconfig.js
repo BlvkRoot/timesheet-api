@@ -7,20 +7,20 @@ module.exports = {
     "synchronize": true,
     "logging": false,
     "entities": [
-       "./entities/**/{*.ts,*.js}"
+       "src/entities/**/{*.ts,*.js}"
       //  "dist/entities/**/{*.ts,*.js}"
     ],
     "migrations": [
-       "./database/migration/**/{*.ts,*.js}"
+       "src/database/migration/**/{*.ts,*.js}"
       //  "dist/database/migration/**/{*.ts,*.js}"
     ],
     "subscribers": [
-       "./subscriber/**/{*.ts,*.js}"
+       "src/subscriber/**/{*.ts,*.js}"
       //  "dist/subscriber/**/{*.ts,*.js}"
     ],
     "cli": {
-       "entitiesDir": "./entities",
-       "migrationsDir": "./database/migration",
-       "subscribersDir": "./subscriber"
+       "entitiesDir": "src/entities",
+       "migrationsDir": "src/database/migration",
+       "subscribersDir": "src/subscriber"
     }
  } 

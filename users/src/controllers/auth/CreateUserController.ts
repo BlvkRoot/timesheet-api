@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import UserDTO from '../../../dto/UserDTO';
+import UserDTO from '../../dto/UserDTO';
 import ICreateUserService from '../../services/auth/ICreateUserService';
 import ICreateUserController from './ICreateUserController';
 

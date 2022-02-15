@@ -1,4 +1,4 @@
-import UserDTO from "../../../dto/UserDTO";
+import UserDTO from "../../dto/UserDTO";
 
 interface ICreateUserService {
     execute(user: UserDTO): Promise<UserDTO>;

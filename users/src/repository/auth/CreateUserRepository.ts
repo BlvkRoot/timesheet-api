@@ -1,4 +1,4 @@
-import UserDTO from '../../../dto/UserDTO';
+import UserDTO from '../../dto/UserDTO';
 import ICreateUserRepository from './ICreateUserRepository';
 
 class CreateUserRepository implements ICreateUserRepository {
