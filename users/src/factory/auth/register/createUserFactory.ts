@@ -1,6 +1,6 @@
-import CreateUserController from "../../controllers/auth/CreateUserController";
-import CreateUserRepository from "../../repository/auth/CreateUserRepository";
-import CreateUserService from "../../services/auth/CreateUserService";
+import CreateUserController from "../../../controllers/auth/register/CreateUserController";
+import CreateUserRepository from "../../../repository/auth/register/CreateUserRepository";
+import CreateUserService from "../../../services/auth/register/CreateUserService";
 
 const createUserFactory = () => {
     const userRepository = new CreateUserRepository();

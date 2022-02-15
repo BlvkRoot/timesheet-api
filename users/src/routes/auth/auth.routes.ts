@@ -1,5 +1,5 @@
 import { Request, Response, Router } from 'express';
-import createUserFactory from '../../factory/auth/createUserFactory';
+import createUserFactory from '../../factory/auth/register/createUserFactory';
 
 const authRoutes = Router();
 

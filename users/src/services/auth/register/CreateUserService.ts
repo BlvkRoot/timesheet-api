@@ -1,8 +1,8 @@
-import UserDTO from '../../dto/UserDTO';
-import ICreateUserRepository from '../../repository/auth/ICreateUserRepository';
+import UserDTO from '../../../dto/UserDTO';
+import ICreateUserRepository from '../../../repository/auth/register/ICreateUserRepository';
 import ICreateUserService from './ICreateUserService';
 import { sign } from 'jsonwebtoken';
-import authJson from '../../config/auth.json';
+import authJson from '../../../config/auth.json';
 import { hashSync } from 'bcryptjs';
 
 class CreateUserService implements ICreateUserService {
