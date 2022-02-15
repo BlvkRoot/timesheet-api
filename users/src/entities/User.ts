@@ -15,8 +15,15 @@ class Users {
   @Column()
   password: string;
   
-  @Column()
-  phone: string;
+  @Column({
+    nullable: true
+  })
+  phone?: string;
+  
+  @Column({
+    nullable: true
+  })
+  token?: string | null;
 
   @Column('timestamp', {
     name: 'created_at',

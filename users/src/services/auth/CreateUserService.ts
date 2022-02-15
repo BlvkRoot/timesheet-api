@@ -3,23 +3,25 @@ import ICreateUserRepository from '../../repository/auth/ICreateUserRepository';
 import ICreateUserService from './ICreateUserService';
 import { sign } from 'jsonwebtoken';
 import authJson from '../../config/auth.json';
+import { hashSync } from 'bcryptjs';
 
 class CreateUserService implements ICreateUserService {
   constructor(private userRepository: ICreateUserRepository) {}
 
   execute = async ({ name, email, password, phone }: UserDTO): Promise<UserDTO> => {
     try {
+        const passwordHash = hashSync(password, 8);
         const user = await this.userRepository.create({
             name,
             email,
-            password,
+            password: passwordHash,
             phone,
           });
-        const token = sign({name, email, phone}, authJson.secret, { expiresIn: '1d'});
-        user.token = token;
+        user.token = sign({name, email, phone}, authJson.secret, { expiresIn: '1d'});
+
         return user;
-    } catch (error) {
-        throw new Error(`${error}`);
+    } catch ({message}) {
+        throw new Error(`${message}`);
     }
   };
 }

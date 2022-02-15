@@ -2,7 +2,7 @@ interface UserDTO {
     name: string,
     email: string,
     password?: string | null,
-    phone: string,
+    phone?: string,
     address?: string,
     token?: string | null
 }

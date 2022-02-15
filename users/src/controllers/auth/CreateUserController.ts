@@ -6,7 +6,7 @@ import ICreateUserController from './ICreateUserController';
 class CreateUserController implements ICreateUserController {
   constructor(private userService: ICreateUserService) {}
 
-  handle = async (request: Request, response: Response): Promise<UserDTO> => {
+  handle = async (request: Request, response: Response): Promise<Response> => {
     try {
       const { name, email, password, phone } = request.body;
       const user = await this.userService.execute({
@@ -15,12 +15,15 @@ class CreateUserController implements ICreateUserController {
         password,
         phone,
       });
-
       delete user.password;
 
-      return user;
-    } catch (error) {
-        throw new Error(`${error}`);
+      return response.json({
+        message: 'User Created Successfully',
+        success: true,
+        data: user,
+      });
+    } catch ({ message }) {
+      response.json({ message, success: false, data: [] });
     }
   };
 }

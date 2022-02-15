@@ -3,17 +3,6 @@ import createUserFactory from '../../factory/auth/createUserFactory';
 
 const authRoutes = Router();
 
-authRoutes.post('/users/create', async (request: Request, response: Response) => {
-    try {
-        const user = await createUserFactory().handle(request, response);
-        return response.json({
-            message: 'User Created Successfully',
-            success: true,
-            data: user
-        })
-    } catch(error) {
-        response.json({ message: error, success: false, data: []});        
-    }
-});
+authRoutes.post('/users/create', async (request: Request, response: Response) => await createUserFactory().handle(request, response));
 
 export default authRoutes;
