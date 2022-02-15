@@ -5,12 +5,12 @@ import loginFactory from '../../factory/auth/login/loginFactory';
 const authRoutes = Router();
 
 authRoutes.post(
-  '/users/create',
+  '/create',
   async (request: Request, response: Response) =>
     await createUserFactory().handle(request, response)
 );
 authRoutes.post(
-  '/users/login',
+  '/login',
   async (request: Request, response: Response) =>
     await loginFactory().handle(request, response)
 );

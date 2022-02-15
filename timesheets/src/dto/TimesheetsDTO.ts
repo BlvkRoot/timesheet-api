@@ -5,3 +5,5 @@ interface TimesheetsDTO {
     project_description: string;
     project_hours: number;
 }
+
+export default TimesheetsDTO;
