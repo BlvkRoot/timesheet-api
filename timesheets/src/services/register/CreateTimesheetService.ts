@@ -29,8 +29,8 @@ class CreateTimesheetService implements ICreateTimesheetService {
       });
 
       return timesheet;
-    } catch (error) {
-      throw new Error('SDFSDF');
+    } catch ({ message }) {
+      throw new Error(message);
     }
   };
 }

@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import timesheetRoutes from './routes/register/timesheet.routes';
+import './database';
 
 const app = express();
 
