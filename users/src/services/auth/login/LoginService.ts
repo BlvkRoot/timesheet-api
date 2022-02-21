@@ -15,7 +15,7 @@ class LoginService implements ILoginService {
   execute = async ({ email, password }: ILoginRequest): Promise<UserDTO> => {
     try {
       const userExists = await this.loginRepository.findUserByEmail(email);
-      if (!userExists) throw new Error(`Invalid User`);
+      if (!userExists) throw new Error(`Invalid User, Please try again.`);
 
       const { password: passwordHash, phone, name } = userExists;
       const passwordMatch = compareSync(password, passwordHash);
