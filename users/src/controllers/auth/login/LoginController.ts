@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import ILoginService from '../../../services/auth/login/ILoginService';
 import ILoginController from './ILoginController';
-
 class LoginController implements ILoginController {
   constructor(private loginService: ILoginService) {}
 
@@ -12,6 +11,8 @@ class LoginController implements ILoginController {
         email,
         password
       });
+
+      response.cookie('timesheets_session', user.token, {maxAge: 86400000});
       return response.json({
         message: 'Login successful',
         success: true,

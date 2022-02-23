@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import authRoutes from './routes/auth/auth.routes';
 import './database';
 import cors from 'cors';
+import cookie from 'cookie-parser';
 
 const app = express();
 const corsOptions = {
@@ -12,6 +13,7 @@ const corsOptions = {
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cors(corsOptions));
+app.use(cookie());
 
 app.get('/', async (request: Request, response: Response) => {
     return response.json({
