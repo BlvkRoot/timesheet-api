@@ -17,6 +17,7 @@ class LoginController implements ILoginController {
         message: 'Login successful',
         success: true,
         token: user.token,
+        userId: user?.id
       });
     } catch ({ message }) {
       response.json({ message, success: false, data: [] });

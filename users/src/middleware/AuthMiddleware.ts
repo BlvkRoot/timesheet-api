@@ -2,6 +2,12 @@ import { NextFunction, Request, Response } from 'express';
 import authJson from '../config/auth.json';
 import { JwtPayload, verify } from 'jsonwebtoken';
 
+interface userPayload {
+  id?: string;
+  name?: string;
+  email?: string;
+}
+
 export const isAuthenticated = async (
   request: Request,
   response: Response,
@@ -14,9 +20,10 @@ export const isAuthenticated = async (
       success: false,
     });
   }
+  const { id, name, email } = verify(token, authJson.secret) as userPayload;
 
-  verify(token, authJson.secret, (decoded: JwtPayload) => {
-    request.userId = decoded.userId; 
-    next();
-  });
+  request.userId = id;
+  request.name = name;
+  request.email = email;
+  next();
 };

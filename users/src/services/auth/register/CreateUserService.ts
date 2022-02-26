@@ -27,7 +27,7 @@ class CreateUserService implements ICreateUserService {
         password: passwordHash,
         phone,
       });
-      user.token = sign({ name, email, phone }, authJson.secret, {
+      user.token = sign({ id: user.id, name, email, phone }, authJson.secret, {
         expiresIn: '1d',
       });
 

@@ -17,12 +17,12 @@ class LoginService implements ILoginService {
       const userExists = await this.loginRepository.findUserByEmail(email);
       if (!userExists) throw new Error(`Invalid User, Please try again.`);
 
-      const { password: passwordHash, phone, name } = userExists;
+      const { id, password: passwordHash, phone, name } = userExists;
       const passwordMatch = compareSync(password, passwordHash);
 
       if (!passwordMatch) throw new Error(`User email or password Invalid.`);
 
-      userExists.token = sign({ name, email, phone }, authJson.secret, {
+      userExists.token = sign({ id, name, email, phone }, authJson.secret, {
         expiresIn: '1d',
       });
 
