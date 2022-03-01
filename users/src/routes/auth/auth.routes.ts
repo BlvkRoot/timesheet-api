@@ -23,6 +23,7 @@ authRoutes.get(
   async (request: Request, response: Response) => {
     return response.json({
       success: true,
+      userId: request?.userId
     });
   }
 );
