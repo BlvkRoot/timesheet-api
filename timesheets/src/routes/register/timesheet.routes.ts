@@ -1,10 +1,11 @@
 import { Router, Request, Response } from 'express';
 import getTimesheetByUserIdFactory from '../../factory/listByUser/getTimesheetFactory';
 import createTimesheetFactory from '../../factory/register/createTimesheetFactory';
+import { timesheetsMiddleware } from '../../middlewares/timesheetsMiddleware';
 
 const timesheetRoutes = Router();
 
-timesheetRoutes.post('/create', async (request: Request, response: Response) =>
+timesheetRoutes.post('/create',[timesheetsMiddleware], async (request: Request, response: Response) =>
   await createTimesheetFactory().handle(request, response)
 );
 
